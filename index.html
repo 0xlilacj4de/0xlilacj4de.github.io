@@ -6,12 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script>
-        const currentPath = window.location.pathname;
-        const newUrl = "https://lilacj4de.gitbook.io" + currentPath;
-        
-        window.location.replace(newUrl);
+        // Get the URL parameter (redirect path)
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirectPath = urlParams.get('redirect');
+
+        // If redirect path exists, append it to the GitBook URL and redirect
+        if (redirectPath) {
+            const newUrl = "https://lilacj4de.gitbook.io" + redirectPath;
+            window.location.replace(newUrl);
+        } else {
+            // Default redirect in case no redirect parameter is found
+            window.location.replace("https://lilacj4de.gitbook.io");
+        }
     </script>
 </head>
 <body>
 </body>
 </html>
+
